@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the assortment of derived traits for the game system. Derived
+      traits are calculated via scripts and based on the attributes from which they
+      are derived.
+
+      Since derived traits are based upon other traits, we have a "chicken-and-egg"
+      situation with respect to script evaluation timing. The "Trait" component
+      auto-calculates the final value for the traits derived FROM, while the "Derived"
+      component provides a second calculation after that to incorporate the results of
+      the special calculation for each derived trait. Each derived trait must then
+      calculate the new derived value between those two times, which is what we
+      accomplish below within the eval script for each derived trait. The script is
+      timed to occur at Traits/4000 to splice it between the two other scripts that
+      mentioned above and performed by the component.
+
+      We calculate the derived value as a "bonus" for the trait, allowing it to be
+      added in appropriately by the component script. Trait bonuses can arise from
+      multiple sources, so we need to ADD our calculated amount instead of setting the
+      amount.
+
+      All trait values are rounded down, so we apply the proper rounding as needed.
+      Rounding must be performed BEFORE we add the adjustment.
+
+      Appropriate tags are assigned to each derived trait to control where the trait
+      displayed to the user and the order in which the traits are displayed.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Health Trait -->
+  <thing
+    id="trHealth"
+    name="Health"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Hlth"/>
+    <tag group="explicit" tag="1"/>
+    <tag group="User" tag="Power"/>
+    <!-- Calculate the Health trait as "BOD * 2 -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = #trait[attrBod] * 2
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+ <!-- Fatigue Trait -->
+  <thing
+    id="trFatigue"
+    name="Fatigue"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Ftg"/>
+    <tag group="explicit" tag="2"/>
+    <tag group="User" tag="Power"/>
+    <!-- Calculate the Fatigue trait as "WIL * 2 -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = #trait[attrWil] * 2
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+  <!-- Edge Points Trait -->
+  <thing
+    id="trEdgePts"
+    name="Edge Points"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Edge"/>
+    <tag group="explicit" tag="3"/>
+    <tag group="User" tag="Edge"/>
+    <!-- Calculate the Edge Points trait as the total of "Edg" -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      field[trtBonus].value = #trait[attrEdg]
+      ]]></eval>
+    </thing>
+
+  <!-- Defense Trait -->
+  <thing
+    id="trDefense"
+    name="Defense"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Def"/>
+    <tag group="explicit" tag="5"/>
+    <tag group="User" tag="Combat"/>
+    <tag group="DashTacCon" tag="Combat"/>
+    <!-- Calcualte the Defense trait as "(Dex * 2 + Wis) / 3" -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = (#trait[attrDex] * 2 + #trait[attrWil]) / 3
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+  <!-- Mental Resistance Trait -->
+  <thing
+    id="trMentRes"
+    name="Mental Resistance"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Ment"/>
+    <tag group="explicit" tag="7"/>
+    <tag group="User" tag="Resistance"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    <!-- Calculate the Mental Resistance trait as "(Cha + Wis * 2) / 3" -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = (#trait[attrCha] + #trait[attrWil] * 2) / 3
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+  <!-- Physical Resistance Trait -->
+  <thing
+    id="trPhysRes"
+    name="Physical Resistance"
+    compset="Trait"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Phys"/>
+    <tag group="explicit" tag="6"/>
+    <tag group="User" tag="Resistance"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    <!-- Calculate the Physical Resistance trait as "(Con * 2 + Str) / 3" -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = (#trait[attrBod] * 2 + #trait[attrStr]) / 3
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+  <!-- Initiative Trait -->
+  <thing
+    id="trInit"
+    name="Initiative"
+    compset="Trait"
+    isunique="yes"
+    description="During the Initiative Phase, each player rolls 2D6 to determine the order in which the characters will act. The character who had the highest Initiative roll result acts first, followed by the character with the next-highest result, and so on until the character with the lowest roll result acts last. Unlike tactical combat (or personal combat using the Tactical Combat Addendum rules beginning on p. 200), personal combat actions are resolved immediately, rather than simultaneously, so a character who wins the Initiative roll can execute and resolve an attack before his opponent has acted. {br}{br}In the event of a tie, the tied character with the highest RFL Attribute score (or the highest WIL score, plus Leadership level, if squad or team Initiative are used) acts first. If these scores are also identical, make a second roll to resolve Initiative between the tied characters. {br}{br}Depending on the number of characters involved, the players and gamemaster may decide to use Individual Initiative, Squad Initiative or Team Initiative. {br}{br}{b}Individual Initiative:{/b} Under Individual Initiative, each character rolls separately for Initiative order, with RFL used as the tie-breaking Attribute score. This method works best for smallscale fights with no more than ten total characters in play. {br}{br}{b}Squad Initiative:{/b} Under Squad Initiative, characters are grouped into squads of four or more characters apiece, with one member of each squad designated the squad’s leader. The leader then rolls for his squad’s place in the Initiative order, of each squad leader’s WIL Attribute score and Leadership Skill levels is used as the tie-breaker in Team Initiative. This method works best for fights involving more than ten characters, or when vehicles are in play. {br}{br}{b}Team Initiative:{/b} Under Team Initiative, a designated leader on each side makes an Initiative roll for the entire side in a fight. As with Squad Initiative, the sum of each leader’s WIL Attribute score and Leadership Skill levels is used as the tiebreaker. At this level of play, however, the winning team must alternate the actions of its various sub-units against those of the other teams in play, with each side moving parts of their total force as proportionately as possible. (For example, a team that outnumbers its enemy 3-to-1 and wins Initiative would have three squad-sized units move and act before the opposing team may even move one.) This method works best for large combat sequences involving fifty or more characters and vehicles.">
+    <fieldval field="trtAbbrev" value="Init"/>
+    <tag group="explicit" tag="4"/>
+    <tag group="User" tag="Combat"/>
+    <tag group="DashTacCon" tag="Combat"/>
+    <tag group="DashTacCon" tag="Traits"/>
+    <!-- Calculate the Initiative trait as "(Dex + Wis) / 5" -->
+    <eval index="1" phase="Traits" priority="4000">
+      <before name="Derived trtFinal"/>
+      <after name="Calc trtFinal"/><![CDATA[
+      var value as number
+      value = (#trait[attrDex] + #trait[attrWil]) / 5
+      value = round(value,0,-1)
+      field[trtBonus].value += value
+      ]]></eval>
+    </thing>
+
+  </document>

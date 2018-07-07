@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the assortment of affiliations for the game system. The special
+      advantages of each affiliation are conferred through a combination of scripts and
+      automatic assignment of attribute adjustments, skills, and character traits. All 
+	  changes are assigned via the bootstrapping of the item, resulting in the item being
+      automatically assigned to the actor whenever the affiliation is selected. If something
+      is both user-selected AND conferred by an affiliation, the ability only appears a single
+      time because it all abilities are "unique".
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Capellan Confederation (House Liao) -->
+  <thing
+    id="affCapCon"
+    name="Capallen Confederation (House Liao)"
+    compset="ISClan"
+    isunique="yes"
+    description="Having suffered badly at the hands of its neighbors for centuries, the Capellan Confederation has become a virtual police state, its people wary of enemies within and without and devoted to survival at any cost. Nearly destroyed by the Steiner-Davion offensive in the Fourth Succession War, the determined Capellan people rallied with fanatical zeal that reached its apex with the ascent of Chancellor Sun-Tzu Liao, whose Xin Sheng (Rebirth) movement revitalized the nation and marked a resurgence of the ancient Chinese culture that now dominates the realm.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[attrWil] += .5
+      ]]></eval>
+
+    </thing>
+
+  <!-- Dwarf Race 
+  <thing
+    id="racDwarf"
+    name="Dwarf"
+    compset="ISClan"
+    isunique="yes"
+    description="Constitution +1. Charisma -1. Gains the Tough and Stalwart Defender abilities.">
+    <bootstrap thing="abTough"/>
+    <bootstrap thing="abDefender"/>
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[attrBod] += 1
+      #traitbonus[attrCha] -= 1
+      ]]></eval>
+    </thing> -->
+
+  <!-- Elf Race 
+  <thing
+    id="racElf"
+    name="Elf"
+    compset="ISClan"
+    isunique="yes"
+    description="Intelligence +1. Constitution -1. Gains the Alert ability.">
+    <bootstrap thing="abAlert"/>
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[attrInt] += 1
+      #traitbonus[attrBod] -= 1
+      ]]></eval>
+    </thing> -->
+
+  <!-- Orc Race 
+  <thing
+    id="racOrc"
+    name="Orc"
+    compset="ISClan"
+    isunique="yes"
+    description="Strength +1. Intelligence -1. Gains the Fortitude and Power Attack abilities.">
+    <bootstrap thing="abFortitud"/>
+    <bootstrap thing="abAttack"/>
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[attrStr] += 1
+      #traitbonus[attrInt] -= 1
+      ]]></eval>
+    </thing> -->
+
+  <!-- Avian Race 
+  <thing
+    id="racAvian"
+    name="Avian"
+    compset="ISClan"
+    isunique="yes"
+    description="Dexterity +1. Wisdom -1. Gains the Flight ability.">
+    <bootstrap thing="abFlight"/>
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[attrDex] += 1
+      #traitbonus[attrWil] -= 1
+      ]]></eval>
+    </thing> -->
+
+  </document>

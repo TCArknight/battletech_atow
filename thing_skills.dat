@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the assortment of skills for the game system. Note that each
+      skill is linked to an associated attribute for the character. This linkage allows
+      the value of the skill to easily incorporate the effects of the linked attribute
+      via a script on the component.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Acrobatics Skill -->
+  <thing
+    id="skAcrob"
+    name="Acrobatics"
+    compset="Skill"
+    description="The Acrobatics Skill covers the character’s grace, balance and training to handle complex—and generally dangerous—physical movement. Modifiers to typical Acrobatics Skill Checks should include weather and gravity conditions, character encumbrance, terrain difficulty and the distance the character is moving. {br}{br}{b}Subskills:{/b} Free-Fall and Gymnastics{br}{br}{b}Free-Fall:{/b} Covers all manner of jumping, gliding, un-powered flight and the use of personal jump packs. A successful Acrobatics/Free-Fall Check represents a safe landing. A failed check represents a crash, with the severity of any damage based on the roll’s Margin of Failure. {br}{br}{b}Gymnastics:{/b} Covers general feats of agility, balance and grace. Though commonly used for show, Gymnastics also covers a multitude of situations where the character may be trying to move around complex obstacles, negotiate exceedingly difficult terrain, avoid falls due to poor and unstable footing, or execute short jumps. A successful Acrobatics/Gymnastics Check can help the character pass through difficult terrain better than others (in personal combat, this can effectively reduce the character’s normal movement costs per turn by 1 MP per point of MoS, to a minimum of 1 MP per meter moved), or avoid damage from falls as high as the Skill’s current level (in meters). A failed Acrobatics/Gymnastics Check can range from a stumble that slows the character down, to a potentially bone-breaking fall.{br}{br}{br}{br}{i}“Look, it’s real simple. All you have to do is leap off the bridge and onto that moving monorail. After that, you roll, grab the edge, and flip yourself inside the side windows, and nobody will even see you coming. Piece of cake, right?”{i}">
+    <fieldval field="trtAbbrev" value="Acrob"/>
+	<tag group="User" tag="NeedDomain"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    </thing>
+
+	  <!-- Acting Skill -->
+  <thing
+    id="skAct"
+    name="Acting"
+    compset="Skill"
+    isunique="yes"
+    description="The Acting Skill covers the character’s ability to use language, projection and personality to entertain, misdirect or just plain charm the socks off someone. Typical Acting Skill Checks should take into account conditions that could harm or help the character’s performance (such as whether he lacks the proper attire or props to present a convincing appearance). However, if the subject is particularly sceptical or wary of the acting character, an Opposed Action Check may be in order to properly resolve the use of this Skill. {br}{br}Acting has no subskills, though it can cover a range of specialities covering deception (the art of lying), fast-talk (bombarding a subject with enough superfluous information to overwhelm him), intimidation (using body language and strength of will to cow a subject with implied threats and bluffs), performance (general entertainment acting, including impersonations) and seduction (the art of charming a subject). Characters seeking to emphasize one of these aspects over another are advised to select one of those Acting styles as a speciality. {br}{br}The success (or failure) of an Acting Check determines whether or not the Acting character delivered a credible performance.{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Acting"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrCha"/>
+    </thing>
+
+  <!-- Administration Skill -->
+  <thing
+    id="skAdmin"
+    name="Administration"
+    compset="Skill"
+    isunique="yes"
+    description="The Administration Skill covers the character’s ability to organize, allocate and track resources for a project—preferably while keeping the entire operation on time and under budget. As this Skill refl ects an abstract and generally universal concept, applicable in business, industrial or military logistics, it has no major subskills, but players may consider an area of specialty to refl ect a project type or work sector that is more familiar to them (such as military logistics, business administration, human resources, land management and so forth). {br}{br}Characters with Administration and who maintain a landhold or a business interest, or are actively working in the support chain of a military command, may use this Skill in game play once a month, with the gamemaster assigning modifiers to the standard Skill Check based on any applicable conditions (such as time, budgetary or manpower limits, and demands on the character). Characters with landholds or business interests may use Administration to determine their profit margins on a monthly basis (with a general increase of 5 percent per 2 points of MoS, or a loss of 5 percent per MoF point). In all other fields, successful Administration Checks may influence whether or not critical supplies, manpower or salaries are received on time.{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Admin"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+	<link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Animal Handling Skill -->
+  <thing
+    id="skAniHand"
+    name="Animal Handling"
+    compset="Skill"
+    description="The ability to control or influence animals, or to interpret their behavior, is governed by the Animal Handling Skill. Modifiers to typical Animal Handling Skill Checks should include the physical and emotional state of the creature being handled, the demeanor of the handler, and any distracting circumstances such as loud noises or other physical stimulus. Animal Handling comes with three main subskills: Herding, Riding and Training. In addition, characters can have specialties focused on a specific creature or class of creatures. {br}{br}{b}Subskills:{/b} Herding, Riding and Training. {br}{br}{b}Herding:{/b} The Herding subskill is used by breeders and ranchers across known space, and includes knowledge of animal diets, life cycles, habitat, behavior and overall animal husbandry. It includes a rudimentary understanding of the animal’s health and its diseases (though it is still no substitute for a veterinarian), but Skill Checks are typically required simply to ensure that a population of animals under the handler’s control is healthy, stable and otherwise well behaved.{br}{br}{b}Riding:{/b} The Riding subskill is used when mounting tamed animals, and includes the ability to interpret the animal’s behavior as well as the knowledge necessary to properly ride the mount. Similar to Piloting or Driving, Animal Handling/Riding mainly requires Skill Checks when attempting to perform special tasks while mounted, such as avoiding a spill when turning at full speed. {br}{br}{b}Training:{/b} The Training subskill is used to tame and train an animal for use as a mount. Checks for this Skill are typically made at the end of a training session with the creature, with success indicating that the animal has learned something and failure indicating that the lessons didn’t stick.">
+    <fieldval field="trtAbbrev" value="AniHan"/>
+	<tag group="User" tag="NeedDomain"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrWil"/>
+    </thing>
+
+  <!-- Appraisal Skill -->
+  <thing
+    id="skAppra"
+    name="Appraisal"
+    compset="Skill"
+    isunique="yes"
+    description="Appraisal is used to determine the relative value or authenticity of an object, and includes suffi cient knowledge of the appropriate market to derive or deduce its monetary value. Appraisal is typically combined with a more academic Interest Skill (see p. 147) and often cannot be obtained without formal education or apprenticeship. Appraisal should be used for objects that have a certain degree of subjective value attached, such as art or historical artifacts, as the value of such objects can be amplified or depressed in a manner separate from normal supply and demand mechanics. For more practical objects—such as electronics, tools and other mechanical or high-tech items—the appropriate Technician Skill is a better choice for identifying value (see p. 157). {br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Appra"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Archery Skill -->
+  <thing
+    id="skArch"
+    name="Archery"
+    compset="Skill"
+    isunique="yes"
+    description="The Archery Skill covers the use of bows and arrows, archaic ranged weapons that discharge a projectile using mechanical force from a drawn bow and string. When wielding bows or crossbows in personal combat, the Archery Skill is used to make the attack. {br}{br}{b}Subskills:{/b} None {br}{br}Though the Archery Skill has no subskills, the differences between hand-drawn bows and crossbows are significant enough to merit specialization, if the player so desires.">
+    <fieldval field="trtAbbrev" value="Archer"/>
+    <link linkage="attribute" thing="attrDex"/>
+    </thing>
+
+  <!-- Art Skill -->
+  <thing
+    id="skArt"
+    name="Art"
+    compset="Skill"
+    description="The Art Skill reflects an aesthetic talent the character has cultivated purely as a means of creative expression. Born more of creativity and handiwork than mere study and research, the Art Skill reflects a range of potential subskills from dancing and music to painting and sculpture. Art Skill Checks are made at the end of the character’s eff orts to create (or perform) a work of art, a process that can take hours, days or even years. Roll modifiers should account for the complexity of the work being attempted, the medium and supplies, and whether or not the artist rushed the job. Success means the character executed the work well, while failure indicates a work that, once completed, may not have been worth the hype. {br}{br}{b}Subskills:{/b} Various media (Dance, Drawing, Music, Painting, Poetry, Sculpture, Songwriting, Writing and so on) {br}{br}{b}Tiered Skill:{/b} To reflect the difference between a casual “hobby” artist and a dedicated professional, Art is represented in A Time of War as a Tiered Skill, progressing from simple training at the lowest four levels (0 through 3) to a more advanced and focused form from which true masterpieces can emerge.">
+    <fieldval field="trtAbbrev" value="Art"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+	<link linkage="attribute2" thing="attrInt"/>
+	  </thing>
+
+  <!-- Artillery Skill -->
+  <thing
+    id="skArtill"
+    name="Artillery"
+    compset="Skill"
+    isunique="yes"
+    description="The Artillery Skill is used to fire and spot for all kinds of artillery-type weapons, from the single-impulse chemical-propelled projectiles of “tube artillery” to self-propelled artillery missiles like the Arrow IV system. Though used primarily on ’Mechs and vehicles, artillery weapons can also be towed into battle by infantry formations, and so are not considered a simple off shoot of the Gunnery Skill. Indeed, certain infantry-carried Support Weapons (such as mortars) also make use of this Skill. {br}{br}{b}Subskills:{/b} None {br}{br}{b}NOTE:{/b} Full rules on the use of artillery in tactical combat are found in Tactical Operations, but additional rules applicable to A Time of War are outlined in the combat chapters of this book.">
+    <fieldval field="trtAbbrev" value="Arty"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+   </thing>
+
+  <!-- Career Skill -->
+  <thing
+    id="skCareer"
+    name="Career"
+    compset="Skill"
+    description="In order to be successful in a given profession, a wide range of skills and knowledge is necessary. The Career Skill is a catch-all that covers the jargon and procedures a character needs to perform the general day-to-day duties of his job such as paperwork, reports to supervisors and the like. {br}{br}{b}Subskills:{/b} Various occupations (Examples: Accountant, Cook, Doctor, Soldier and so on) {br}{br}Career Skill Checks are used only to resolve tasks that fall within the character’s chosen profession, but that are not adequately represented by the other Skills in this chapter. If the character possesses another Skill that better fits a part of his profession, use that Skill instead (even if it is of a lower level). For example, a MechWarrior with the Career/Soldier Skill at Level 3 cannot use it in place of his Level 2 Gunnery/’Mech Skill. {br}{br}The gamemaster must ultimately decide if a particular task in the character’s job can be resolved using the Career Skill, or must be resolved with another Skill or Attribute Check.">
+    <fieldval field="trtAbbrev" value="Career"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Climbing Skill -->
+  <thing
+    id="skClimb"
+    name="Climbing"
+    compset="Skill"
+    isunique="yes"
+    description="The Climbing Skill is necessary when attempting to scale up or down any heights without the benefit of stairs, ladders or elevators. Though formal training isn’t required to climb relatively simple objects like trees and rocks with a decent slope to them, negotiating the steep rock face of a mountain, clambering up the side of a building or swarming a moving BattleMech requires more than a little practice. {br}{br}{b}Subskills:{/b} None {br}{br}Possession of the Climbing Skill allows the character to use Climbing movement in personal combat as a Simple Action (without it, Climbing is not only an untrained Skill, but a Complex Action as well). In addition, this Skill covers knowledge of climbing and rappelling gear. {br}{br}Climbing Skill Checks (when required) may be modified based on how treacherous or difficult to climb a surface is, how much weight the character is carrying, and whether or not the character is using any kind of climbing gear suitable for the job. On a successful Climbing Check, a character scales the surface he is climbing; on a failure, he falls. (Merciful gamemasters should consider allowing a failed Climbing Check with a low MoF to represent a momentary slip, on which the character merely loses some distance.)">
+    <fieldval field="trtAbbrev" value="Climb"/>
+    <link linkage="attribute" thing="attrDex"/>
+    </thing>
+
+  <!-- Communications Skill -->
+  <thing
+    id="skComm"
+    name="Communications"
+    compset="Skill"
+    description="The Communications Skill is used for all methods of organized communication. This Skill gives the character an understanding of how to use local communications networks commonly found on any inhabited world, as well as how to transmit and receive data and messages over such networks. Action Checks for this Skill are used most often to establish or tap into a communications network, detect and receive incoming signals, triangulate the source of an unidentified comm signal, or even attempt to jam enemy communications. Other actions related to communications—such as translating coded messages, hacking into automated systems or repairing damaged comm equipment—all require other Skills (Cryptography, Computers and Technician/Electronics, respectively). {br}{br}{b}Subskills:{/b} Black Box, Conventional (EM), Hyperpulse Generator {br}{br}Skill modifiers for Communications can include bonuses for the proper equipment (a character cannot use this Skill without some form of communications equipment), and penalties for hostile (or neutral) interference. In some cases, Opposed Communications Checks may even be necessary to resolve an effort to overcome an active enemy jamming effort. {br}{br}Communications comes with three main subskills, each reflecting a different method of communication used in the thirty-first century: Black Box, Conventional EM and Hyperpulse Generator. {br}{br}{b}Black Box:{/b} A top-secret interstellar communications device (often also called a fax because it sends and receives messages as simple text-on-paper), the so-called black box represents a peculiar Star League-era experimental technology based on older pre-HPG communications tech. Its transmissions are faster than light, but slower and more restrictive than hyperpulse technology. Because it remains classified among the few major powers that have samples of this device, formal training in Communications/Black Box is non-existent. {br}{br}{b}Conventional (EM):{/b} Conventional electromagnetic communications—often referred to by the archaic term “radio”—represents the most basic and accessible form of communications. This subskill covers the use of wired and wireless communications devices, from personal communicators and radios to satellite relay systems and C3 networks, including LOS laser and microwave communicators. {br}{br}{b}Hyperpulse Generator:{/b} Ever since the heyday of the Star League, virtually all interstellar communications have been handled by the vast network of hyperpulse generators that link nearly every inhabited world together. Essentially a massive energy cannon, designed to “shoot” ultra-compressed signal batches through hyperspace, the hyperpulse generator (HPG) is the most efficient and secure form of interstellar communications known to thirty-fi rst century humankind, even as the stewards of its technological secrets—ComStar and the Word of Blake—wage war against one another. Only ComStar, Word of Blake and the Clans train people in HPG communications, making this Skill only somewhat easier to come by than Communications/Black Box.">
+    <fieldval field="trtAbbrev" value="Comms"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Computers Skill -->
+  <thing
+    id="skComp"
+    name="Computers"
+    compset="Skill"
+    isunique="yes"
+    description="The Computers Skill covers the operation or creation of software using computers in the BattleTech universe. While the user interface of most devices is sufficiently simple to operate that it takes no training or Skill to accomplish rudimentary tasks, taking full advantage of a computer’s capabilities to access data, conduct in-depth research or hack into sensitive networks requires some form of the Computers Skill. Action Checks for this Skill apply any time the character attempts to do more than browse the system or use ready-made applications (such as word processors, electronic readers or accessing local GPS and interweb networks). Modifiers may apply if the software is outdated, corrupted or just plain incompatible with the system being used, or if the system has been locked against potential hackers. {br}{br}{b}Subskills:{/b} None {br}{br}The Computers Skill has no subskills, but the tiered nature of this Skill helps mark the difference between computer operations and computer programming. Skilled computer operators can take full advantage of the computer’s capabilities, including the ability to quickly navigate the memory and storage devices attached to the computer to find hidden data, hard-to-reach network sites, and even diagnose software and hardware problems. Programmers, meanwhile, can create, alter and manipulate software, or even hack through software security and firewalls to dig up ultra-sensitive data. {br}{br}{b}Tiered Skill:{/b} To reflect the difference between casual computer operations and more sophisticated programming and hacking, the Computers Skill is represented in A Time of War as a Tiered Skill, progressing from simple computer operations at the Basic four levels (0 through 3) to more advanced programming levels where the user can create and manipulate programs rather than simply running them, and bypass virtual security.">
+    <fieldval field="trtAbbrev" value="Comp"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+	<link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- Cryptography Skill -->
+  <thing
+    id="skCrypto"
+    name="Cryptography"
+    compset="Skill"
+    isunique="yes"
+    description="The techniques and process of coding and decoding data is known as cryptography. The Cryptography Skill enables a character to attempt to create and decode communications and data alike. When using this Skill to encode data, the character’s Margin of Success becomes the modifier used by anyone attempting to decode the message without a cipher. (If the check fails, the transmission or data is not properly encoded, and will be automatically translated by anyone who receives the information.) {br}{br}{b}Subskills:{/b} None {br}{br}Attempting to decode a message or data with the proper cipher does not require a Cryptography Skill Check as long as the decoding character also has the Cryptography. Encoding or decoding transmissions or data electronically is accomplished within seconds or minutes, depending on the amount of data to be decoded. Encoding or decoding transmissions and data manually can be extremely time-consuming, requiring numerous man-hours.">
+    <fieldval field="trtAbbrev" value="Crypto"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Demolitions Skill -->
+  <thing
+    id="skDemo"
+    name="Demolitions"
+    compset="Skill"
+    isunique="yes"
+    description="The ability to rig, use, arm and disarm explosives, as well as determining the best quantity, power and placement of explosive charges, is covered by the Demolitions Skill. While most explosives follow the brute force rule (if it’s not working, you’re not using enough), the safe use of explosives— and, more importantly, the ability to disable them without detonation—requires training. Demolitions Skill Checks are needed any time a character attempts to set up or disable an explosive device. Modifiers for setting up explosives include difficulty modifiers for less than ideal placement or insufficient explosive materials, or for working with particularly crude or unstable components. The Margin of Success on a successful explosives setup check will translate into the penalty modifier for anyone attempting to disable the device. {br}{br}There is little margin for error when handling or disarming explosives, which should be reflected by the dire consequences of a failed Demolitions Skill Check. If the character fails to set up an explosive by a MoF of 5 or more, the explosives prematurely detonate, immediately doing their maximum damage to the character. The same result occurs if a character fails a disarming Demolitions Skill Check with any MoF of 3 or more. Any other failed result simply means that the device fails to arm or disarm, respectively.{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Demo"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrDex"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Disguise Skill -->
+  <thing
+    id="skDisg"
+    name="Disguise"
+    compset="Skill"
+    isunique="yes"
+    description="The Disguise Skill is used to adjust one’s own appearance to avoid recognition (or to be taken for someone else). Modifiers apply to Action Checks for this Skill based on the equipment (or lack thereof) that the disguising character has on hand to make the change, as well as on what features and changes the character is attempting to accomplish and how. The gamemaster should define the possible modifiers for such an Action Check up front, based on how radically the character is making his change.{br}{br}If successful, the disguising character’s MoS applies as a penalty against any Perception Skill Checks to see through the ruse. (If the perceiving character also has Disguise, however, his own Disguise Skill level can be applied as a bonus to the Perception Check, Although the Thor possesses superior technology, even its Clan-made armor is no match for Hauptmann David Hawthorne’s ace gunnery skills and his ’Mechs’ hulking autocannon. since he will more likely recognize the tricks of the trade.) A failed Disguise Check means the altered look is simply too obvious to work with.{br}{br}A successful Acting Skill Check can further enhance the effectiveness of a good disguise. If a character successfully makes both a Disguise and an Acting Skill Check, the MoS for both Skills will apply to the perceiving character’s Perception Check to penetrate the disguise.{br}{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Disg"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrCha"/>
+    </thing>
+
+  <!-- Driving Skill -->
+  <thing
+    id="skDrive"
+    name="Driving"
+    compset="Skill"
+    description="The ability to operate and drive surface-based vehicles and vessels is determined by the Driving Skill. In general, Driving focuses on vehicles designed to be piloted by a single driver, but larger units that require multiple pilots still rely on a single navigator/master driver who directs the unit’s overall motion. Because all vehicles tend to vary, gamemasters may apply penalties to Driving Skill Checks if the character finds himself operating a vehicle or vessel that he is not accustomed to, especially if the vehicle has radically different performance specs from his regular ride (such as attempting to drive an ultra-swift, ultra-light Savannah Master hovercraft after long years behind the wheel of a large and lumbering Demolisher assault tank). Because vehicles can be regarded as tactical units, more detailed rules for their operation may be found under the relevant movement rules chapters in Total Warfare, Tactical Operations and Strategic Operations.{br}{br}{br}{b}Subskills:{/b} Ground Vehicles, Rail Vehicles, Sea Vehicles{br}{br}The Driving Skill broadly covers two main classes of vehicles in A Time of War with the following two subskills: Ground Vehicles and Sea Vehicles. {br}{br}{b}Ground Vehicles:{/b} Ground Vehicles include any vehicle designed to operate primarily on land (or just above it), and includes Combat and Support Vehicles with wheeled, tracked or hover-based motive systems. {br}{br}{b}Rail Vehicles:{/b} This specialized subskill covers all rail vehicles, including conventional trains and magnetic levitation (maglev) vehicles. {br}{br}{b}Sea Vehicles:{/b} Sea Vehicles includes displacement hull, hydrofoil and submersible vessels designed for operation on (or under) water, and therefore covers all Combat and Support Vehicles with such motive systems.">
+    <fieldval field="trtAbbrev" value="Drive"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    <link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- Escape Artist Skill -->
+  <thing
+    id="skEscArt"
+    name="Escape Artist"
+    compset="Skill"
+    isunique="yes"
+    description="The Escape Artist Skill is used to defeat restraints placed on the character’s person. (Locks and other devices established to trap a character in—or keep the character out of—a room are defeated using the Security Systems Skill.) Gamemasters may modify any Escape Artist roll based on the sophistication of the restraints that bind the character, as well as any tools or other aids the character may be resourceful enough to obtain.{br}{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="EscArt"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrStr"/>
+    <link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- Forgery Skill -->
+  <thing
+    id="skForge"
+    name="Forgery"
+    compset="Skill"
+    isunique="yes"
+    description="Most modern official documents contain a number of devices intended to prevent them being copied without being identifiable as a copy or new product (the most effective being the DNA-triggered verigraph, which is often used to validate ComStar documents). Yet despite these efforts, the methods and means to falsify such documents have also evolved, and their use is covered under the Forgery Skill.{br}{br}When attempting to create a copy of official documents, a character uses Forgery Skill, with a difficulty modifier based on the sophistication of the document’s verification devices and the tools at the character’s disposal. For example, simple handwritten signatures—fairly easy to reproduce—apply a minimal modifier of +0 to –1 to reproduce by hand (an electronic replication may even give the character a bonus), while efforts to reproduce a verigraph may apply a more extreme –4 to –6 penalty to pull off , even with sophisticated electronic equipment at the forger’s disposal.{br}{br}When attempting to determine whether a document has been forged, the MoS of the forger is used as a penalty against the opposing character’s Perception or Investigation Skill Checks. If the perceiving character has the Forgery Skill himself, that Skill’s modifier may be applied to the effort to detect the fraud. Without the Skill, however, or any other tools to penetrate the ruse, additional penalties may apply to the Perception or Investigation Check.{br}{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Forger"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrDex"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Gunnery Skill -->
+  <thing
+    id="skGunner"
+    name="Gunnery"
+    compset="Skill"
+    description="The Gunnery Skill is used by operators of most Combat Vehicles, ’Mechs, battlesuits, and aerospace units to aim and fire the unit’s onboard weaponry in combat. The modifiers that apply to these Skills are described in the relevant combat chapters for Total Warfare, Tactical Operations and Strategic Operations (though it is important to remember that such modifiers are applied to the roll TNs in those rulebooks, while A Time of War inverts the same modifiers and applies them to the Skill Check for the same outcomes). The Gunnery Skill reflects the use of weapons mounted directly on a broad range of units, many of which have very different functional interfaces. As a result, Gunnery has a number of subskills, which must be specified at character creation.{br}{br}{br}{b}Subskills:{/b} Aerospace, Air Vehicle, Battlesuit, Ground Vehicle, ’Mech, ProtoMech, Sea Vehicle, Spacecraft, Turret{br}{br}{b}Aerospace:{/b} Gunnery/Aerospace covers the use of all weapons mounted on small aerospace units, including aerospace fighters, Small Craft and Satellite Support Vehicles.{br}{br}{b}Air Vehicle:{/b} Gunnery/Air Vehicle covers the use of all weapons mounted on atmospheric-only units, including Airship Support Vehicles, conventional fighters, VTOLs and WiGE vehicles.{br}{br}{b}Battlesuit:{/b} Gunnery/Battlesuit covers the use of weapons mounted on battle armor, power armor (light), and exoskeletons. (For smaller weapons carried by the suit’s manipulators or armored gloves, the appropriate Small Arms or Support Weapons Skill applies instead.){br}{br}{b}Ground Vehicle:{/b} Gunnery/Ground Vehicle applies to the use of all weapons mounted on Combat and Support Vehicles with a wheeled, tracked or hover motive system. {br}{br}{b}’Mech:{/b} Gunnery/’Mech covers the use of all weapons mounted on BattleMechs and IndustrialMechs. {br}{br}{b}ProtoMech:{/b} Gunnery/ProtoMech applies to the use of all weapons mounted on ProtoMech units. {br}{br}{b}Sea Vehicle:{/b} Gunnery/Sea Vehicle applies to the use of all weapons mounted on Combat and Support Vehicles with a displacement hull, hydrofoil or submersible naval vessel motive system. Spacecraft: Gunnery/Spacecraft applies to the use of all weapons mounted on large spacecraft, including DropShips, JumpShips, WarShips and Space Stations. {br}{br}{b}Turret:{/b} Gunnery/Turret applies to the use of all weapons mounted directly on fixed defense turrets and structures (including Mobile Structures), as well as weapons mounted on fixed-movement units (Rail Vehicles).">
+    <fieldval field="trtAbbrev" value="Gunner"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    <link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- Interest Skill -->
+  <thing
+    id="skInter"
+    name="Interest"
+    compset="Skill"
+    description="The Interest Skill is another great catchall Skill that includes any specific area of study or specialized knowledge a character possesses that is not covered by any other Skill on the character’s record sheet. {br}{br}Interest Skill Checks are used only to resolve tasks that fall within the character’s area of interest, but are not adequately represented by other Skills within this chapter. If the character possesses another Skill that better fits a given situation, use that Skill instead (even if it is at a lower level). For example, a technician with the Interest/BattleMechs Skill at Level 4 cannot use it in place of his Level 2 Technician/Nuclear Skill. {br}{br}The gamemaster ultimately decides if a particular task in the character’s job can be resolved using the Interest Skill, or must be resolved with another Skill or Attribute Check.{br}{br}{br}{b}Subskills:{/b} Any academic or cultural pursuit or hobby (History, Literature, Holo-Games, Sports Statistics and so on). {br}{br}{br}{b}Tiered Skill:{/b} To reflect the difference between casual “hobby level” interests and a dedicated expert in a subject, Interest is represented in A Time of War as a Tiered Skill, progressing from simple training at the lowest four levels (0 through 3) to a more advanced and focused form common among specialists and consultants.">
+    <fieldval field="trtAbbrev" value="Inter"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+	<link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Interrogation Skill -->
+  <thing
+    id="skInterr"
+    name="Interrogation"
+    compset="Skill"
+    isunique="yes"
+    description="The Interrogation Skill covers the ability to extract information from an individual who is unwilling to yield any. Beyond simple torture, intimidation and persuasiveness, this Skill includes the ability to determine (within reason) whether a subject is telling the truth or lying. (Whether the subject is correct or not is a different matter entirely.) {br}{br}Modifiers to an Interrogation Skill Check must include the subject’s WIL (subtracted from the roll, as a penalty), and may account for additional effects, such as the subject’s health (injured or fatigued subjects are easier to break), the interrogator’s methods (chemicals, force or the old “good interrogator/bad interrogator” routine may provide varying effects) and the amount of time taken (longer periods can wear a subject down as the prospect of escape or rescue wanes, producing a bonus). A successful Interrogation Check can reveal as much as one critical or useful piece of information per point of MoS; a failed check can translate to learning nothing, or—if violence or torture is involved—the subject’s injury or death at the interrogator’s hand.{br}{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Interr"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrWil"/>
+    <link linkage="attribute2" thing="attrCha"/>
+    </thing>
+
+  <!-- Investigation Skill -->
+  <thing
+    id="skInvest"
+    name="Investigation"
+    compset="Skill"
+    isunique="yes"
+    description="The Investigation Skill is used to gather evidence toward the solution of a particular mystery, and is a favored Skill among police detectives, private security and intelligence operatives. Using a structured approach toward information gathering, characters skilled in Investigation can identify what avenues and sequences of research will most likely produce results, and can tap a broad range of sources for information and evidence pertaining to a particular crime or other past action. {br}{br}Investigation Skill Checks focus on hard evidence and research (gathering evidence from witnesses falls under the Interrogation Skill), and should apply modifiers based on the amount of evidence gathered so far, balanced against the actual suspect’s efforts to cover his tracks (if any). The process can take hours or days depending on the investigator’s meticulousness, the suspect’s caution, and pure dumb luck, with every successful roll made after that period either eliminating one or more suspects or adding one or more bits of significant evidence—after which, the process begins again. Failed Investigation Checks turn out to be dead ends or false leads, wasting valuable resources and time the investigator simply may not have. {br}{br}{br}{b}Subskills:{/b} None {br}{br}The Investigation Skill has no subskills, but characters may specialize in forensics (the analysis of physical evidence) or research (the analysis of records and media) as a focus for their evidence gathering. {br}{br}Gamemasters should take great care, however; it can be all too tempting for a player to roll his character’s way to the conclusion of an investigation using this Skill.">
+    <fieldval field="trtAbbrev" value="Invest"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Language Skill -->
+  <thing
+    id="skLang"
+    name="Language"
+    compset="Skill"
+    description="A wide variety of languages exists within the BattleTech universe. While standard English is spoken on almost every inhabited world, most realms—and their member worlds—have also developed layers of their own languages, dialects and terminology (some dating back to pre-Exodus Terra) that combine to make interstellar travel an enlightening experience in cultural diversity. A character’s Language Skill identifies the languages he can speak, understand and (usually) read, with each Language subskill identifying one language in the character’s repertoire. Language Skill Checks are almost never necessary in game play; the character is generally considered to be automatically successful at understanding any language for which he has a Skill Level of 0 (though he will speak it with a pronounced local accent), and with basic reading comprehension possible at Level 1 (unless the character has the Illiterate Trait; see p. 119). At Level 2, the character attains enough ability in the language that he can be understood by another character who has only recently learned the words himself (effectively eradicating the worst of his accent), while a character at Level 3 is considered fluent. At a Skill Level of 4 or higher, the character’s command of the language is considered excellent, with an expanded vocabulary and clear enough enunciation to be easily understood anywhere the language is spoken. {br}{br}{br}{b}Subskills:{/b} Any specific language">
+    <fieldval field="trtAbbrev" value="Lang"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrCha"/>
+    </thing>
+
+  <!-- Leadership Skill -->
+  <thing
+    id="skLeader"
+    name="Leadership"
+    compset="Skill"
+    isunique="yes"
+    description="The Leadership Skill is used to inspire and motivate subordinates to follow the character’s commands, and is a common Skill among military and political leaders (for obvious reasons). A Leadership Skill Check is typically not required in normal game play, but may be called for when attempting to exhort NPCs to do something questionable or potentially suicidal (in which case, a penalty modifier should be applied that reflects the relative danger presented by following the command). {br}{br}The Leadership Skill can also provide an Initiative bonus to a team of characters during personal combat (see p. 166) as long as the character using the Skill is, in fact, in command of the team and able to communicate with them during the battle. Leadership can also provide an Initiative bonus in tactical combat (see p. 204) at the gamemaster’s discretion (as it means the enemy’s Leadership Skill should also be applied). {br}{br}{br}{b}Subskills:{/b} None">
+    <fieldval field="trtAbbrev" value="Leader"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrWil"/>
+    <link linkage="attribute2" thing="attrCha"/>
+    </thing>
+
+  <!-- Martial Arts Skill -->
+  <thing
+    id="skMarArt"
+    name="Martial Arts"
+    compset="Skill"
+    isunique="yes"
+    description="At its most basic levels, the Martial Arts Skill represents the character’s prowess in unarmed (or virtually unarmed) melee combat. With this Skill, the character’s fists and feet are weapons, though not until he achieves higher levels of expertise can the character exchange brute force, adrenaline and fury with the skilled focus of a true fighter. {br}{br}The rules for using the Martial Arts Skill in personal combat appear on pp. 175-177. Specialities exist that encompass the various styles of martial arts available (such as boxing, gung fu, karate and the like), but in A Time of War, these specialities merely reflect the potential attained in advanced Martial Arts Skill levels. Though each style has its strengths and weaknesses, the basic rules remain the same in standard game play. {br}{br}{br}{b}Subskills:{/b} None {br}{br}{br}{b}Tiered Skill:{/b} To reflect the difference between crude street fighting and the skills of a honed hand-to-hand killer, Martial Arts is represented in A Time of War as a Tiered Skill, progressing from simple training at the lowest four levels (0 through 3) to a more advanced and sophisticated style available only through dedicated training and experience. Even though a character may spend all of his martial arts training career learning judo, karate and other specialized fighting forms, it is only after reaching advanced levels (4 and up) that these styles truly take hold and enable the character to deliver stronger and more precise blows in combat.">
+    <fieldval field="trtAbbrev" value="MarArt"/>
+    <link linkage="attribute" thing="attrRfl"/>
+	<link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- MedTech Skill -->
+  <thing
+    id="skMedTech"
+    name="MedTech"
+    compset="Skill"
+    description="The MedTech Skill represents basic medical training, including everything from first aid (Skill Level 0) to basic pharmacology and other “field medicine.” A skilled MedTech can stabilize wounded characters in combat, treat characters who have undergone surgery and who are in recovery, and perform all duties and procedures that might be asked of a nurse or a clinical doctor, but falls just shy of being able to perform major surgery. Additional rules covering the use of MedTech Skills in game play are described under Healing and Recovery in the Personal Combat chapter (see pp. 192-195). {br}{br}{br}{b}Subskills:{/b} General, Veterinary {br}{br}{b}General:{/b} MedTech/General is the subskill used to treat human patients in A Time of War. {br}{br}{b}Veterinary:{/b} The MedTech/Veterinary subskill is used in the treatment of animals. However, given the sheer diversity of life in the BattleTech universe, veterinary MedTechs should further define their area of expertise with a speciality species or class of species (examples might include Avians, Terrestrial Mammals or Trachzoi).">
+    <fieldval field="trtAbbrev" value="MedTec"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Melee Weapons Skill -->
+  <thing
+    id="skMelee"
+    name="Melee Weapons"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Melee"/>
+    <link linkage="attribute" thing="attrDex"/>
+	<link linkage="attribute2" thing="attrRfl"/>
+    </thing>
+
+  <!-- Navigation Skill -->
+  <thing
+    id="skNavigate"
+    name="Navigation"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Nav"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Negotiation Skill -->
+  <thing
+    id="skNegoti"
+    name="Negotiation"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Negoti"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrCha"/>
+    </thing>
+
+  <!-- Perception Skill -->
+  <thing
+    id="skPercept"
+    name="Perception"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Percep"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    </thing>
+
+  <!-- Piloting Skill -->
+  <thing
+    id="skPilot"
+    name="Piloting"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Pilot"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    <link linkage="attribute2" thing="attrDex"/>
+    </thing>
+
+  <!-- Prestidigitation Skill -->
+  <thing
+    id="skPresti"
+    name="Prestidigitation"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Presti"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+	<link linkage="attribute2" thing="attrRfl"/>
+    </thing>
+
+  <!-- Protocol Skill -->
+  <thing
+    id="skProto"
+    name="Protocol"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Proto"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrWil"/>
+    <link linkage="attribute2" thing="attrCha"/>
+    </thing>
+
+  <!-- Running Skill -->
+  <thing
+    id="skRun"
+    name="Running"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Run"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    </thing>
+
+  <!-- Science Skill -->
+  <thing
+    id="skScience"
+    name="Science"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Sci"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Security Systems Skill -->
+  <thing
+    id="skSecSys"
+    name="Security Systems"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="SecSys"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Sensor Operations Skill -->
+  <thing
+    id="skSenOps"
+    name="Sensor Operations"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="SenOps"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Small Arms Skill -->
+  <thing
+    id="skSmArms"
+    name="Small Arms"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="SmArms"/>
+    <link linkage="attribute" thing="attrDex"/>
+    </thing>
+
+  <!-- Stealth Skill -->
+  <thing
+    id="skStealth"
+    name="Stealth"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Sneak"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Strategy Skill -->
+  <thing
+    id="skStrategy"
+    name="Strategy"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Strat"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrWil"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Streetwise Skill -->
+  <thing
+    id="skStreet"
+    name="Streetwise"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Street"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrCha"/>
+    </thing>
+
+  <!-- Support Weapons Skill -->
+  <thing
+    id="skSupWep"
+    name="Support Weapons"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="SupWep"/>
+    <link linkage="attribute" thing="attrDex"/>
+    </thing>
+
+  <!-- Surgery Skill -->
+  <thing
+    id="skSurgery"
+    name="Surgery"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Surgy"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Survival Skill -->
+  <thing
+    id="skSurvival"
+    name="Survival"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Surv"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrBod"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Swimming Skill -->
+  <thing
+    id="skSwim"
+    name="Swimming"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Swim"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrStr"/>
+    </thing>
+
+  <!-- Tactics Skill -->
+  <thing
+    id="skTac"
+    name="Tactics"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Tac"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Technician Skill -->
+  <thing
+    id="skTech"
+    name="Technician"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Tech"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+    <link linkage="attribute2" thing="attrInt"/>
+    </thing>
+
+  <!-- Thrown Weapons Skill -->
+  <thing
+    id="skThwnWep"
+    name="Thrown Weapons"
+    compset="Skill"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="ThrWep"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrDex"/>
+    </thing>
+
+  <!-- Tracking Skill -->
+  <thing
+    id="skTrack"
+    name="Tracking"
+    compset="Skill"
+   description="Description goes here">
+    <fieldval field="trtAbbrev" value="Track"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+	<tag group="User" tag="NeedDomain"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrWil"/>
+    </thing>
+
+  <!-- Training Skill -->
+  <thing
+    id="skTrain"
+    name="Training"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="Train"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrInt"/>
+    <link linkage="attribute2" thing="attrCha"/>
+    </thing>
+
+  <!-- Zero-G Operations Skill -->
+  <thing
+    id="skZeroGOps"
+    name="Zero-G Operations"
+    compset="Skill"
+    isunique="yes"
+    description="Description goes here">
+    <fieldval field="trtAbbrev" value="ZeroG"/>
+    <tag group="DashTacCon" tag="NonCombat"/>
+    <link linkage="attribute" thing="attrRfl"/>
+    </thing>
+
+  </document>

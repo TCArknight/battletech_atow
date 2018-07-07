@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the assortment of special abilities for the game system.
+      Abilities confer their effects through scripts that apply the necessary changes
+      to the appropriate traits.
+
+      Character Traits influence traits, so all adjustments must be applied prior to when the
+      final trait value is calculated. The script timing used below (PreTraits/5000)
+      ensures that we satisfy this requirement. All abilities should be designated as
+      "unique" so that they can only be selected a single time by the user.
+-->
+
+<document signature="Hero Lab Data">
+
+	<!-- Fast Learner [Character] -->
+	<thing
+	id="abFastLea"
+	name="Fast Learner"
+	compset="ChaTra"
+	isunique="yes"
+	description="A character with the Fast Learner Trait can pick up and improve Skills faster than many other characters of equal intelligence. Fast Learner reduces the experience cost for Skills by 10 percent, both during character generation (see p. 85) and Skill advancement (see p. 333). {br}{br}{b}NOTE:{/b} The Slow Learner Trait opposes the Fast Learner Trait. If a character with Fast Learner receives or purchases Slow Learner (or vice versa), the Traits cancel each other out.">
+	</thing>
+
+  <!-- Tough Ability 
+  <thing
+    id="abTough"
+    name="Tough"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Defense.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[trDefense] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Agile Ability 
+  <thing
+    id="abAgile"
+    name="Agile"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Athletics and Stealth skills.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[skAthletic] += 1
+      #traitbonus[skStealth] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Alert Ability 
+  <thing
+    id="abAlert"
+    name="Alert"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Initiative.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[trInit] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Melee Expert Ability 
+  <thing
+    id="abMeleeExp"
+    name="Melee Expert"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Melee skill. Requires minimum Strength of 5."
+    summary="Gains a +1 on Melee skill.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[skMelee] += 1
+      ]]></eval>
+    <prereq iserror="yes" message="Strength 5 required.">
+      <validate><![CDATA[
+        validif (#trait[attrStr] >= 5)
+        if (@ispick <> 0) then
+          altpick.linkvalid = 0
+          endif
+        ]]></validate>
+      </prereq>
+    </thing>-->
+
+  <!-- Marksman Ability 
+  <thing
+    id="abMarksman"
+    name="Marksman"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Shooting skill. Requires minimum Dexterity of 5."
+    summary="Gains a +1 on Shooting skill.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[skShooting] += 1
+      ]]></eval>
+    <prereq iserror="yes" message="Dexterity 5 required.">
+      <validate><![CDATA[
+        validif (#trait[attrDex] >= 5)
+        if (@ispick <> 0) then
+          altpick.linkvalid = 0
+          endif
+        ]]></validate>
+      </prereq>
+    </thing> -->
+
+  <!-- Dodge Ability 
+  <thing
+    id="abDodge"
+    name="Dodge"
+    compset="Ability"
+    isunique="yes"
+    description="Incurs no penalties for fighting multiple opponents.">
+    </thing>-->
+
+  <!-- Perceptive Ability 
+  <thing
+    id="abPercept"
+    name="Perceptive"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Search and Empathy skills.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[skSearch] += 1
+      #traitbonus[skEmpathy] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Influential Ability 
+  <thing
+    id="abInfluenc"
+    name="Influential"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Persuade and Socialize skills.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[skPersuade] += 1
+      #traitbonus[skSocial] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Strong Will Ability 
+  <thing
+    id="abStrWill"
+    name="Strong Will"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Mental Resistance rolls.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[trMentRes] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Fortitude Ability 
+  <thing
+    id="abFortitud"
+    name="Fortitude"
+    compset="Ability"
+    isunique="yes"
+    description="Gains a +1 on Physical Resistance rolls.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      #traitbonus[trPhysRes] += 1
+      ]]></eval>
+    </thing>-->
+
+  <!-- Blind-Fight Ability 
+  <thing
+    id="abBlindFt"
+    name="Blind-Fight"
+    compset="Ability"
+    isunique="yes"
+    description="All melee penalties for reduced visibility are halved.">
+    </thing>-->
+
+  <!-- Quick Healer Ability 
+  <thing
+    id="abQukHeal"
+    name="Quick Healer"
+    compset="Ability"
+    isunique="yes"
+    description="All Healing rolls made to heal the character are at +1. Heal one extra point of damage per day of complete rest."
+    summary="Healing rolls at +1. Heal +1 damage per day.">
+    <tag group="User" tag="CreateOnly"/>
+    </thing>-->
+
+  <!-- Martial Arts Ability 
+  <thing
+    id="abMartial"
+    name="Martial Arts"
+    compset="Ability"
+    isunique="yes"
+    description="Gains +2 on attack and damage rolls when using an unarmed attack. Requires minimum Dexterity of 6."
+    summary="Gains +2 on attack/damage with unarmed attacks.">
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      hero.child[wpUnarmed].field[wpBonus].value += 2
+      hero.child[wpUnarmed].field[wpDamage].text &= "+2"
+      ]]></eval>
+    <prereq iserror="yes" message="Dexterity 6 required.">
+      <validate><![CDATA[
+        validif (#trait[attrDex] >= 6)
+        if (@ispick <> 0) then
+          altpick.linkvalid = 0
+          endif
+        ]]></validate>
+      </prereq>
+    </thing>-->
+
+  <!-- Flight Ability 
+  <thing
+    id="abFlight"
+    name="Flight"
+    compset="Ability"
+    isunique="yes"
+    description="Can fly at twice normal movement speed, with normal encumbrance limits."
+    summary="Fly at twice normal speed (normal encumbrance).">-->
+    <!-- We don't want this ability appearing for normal selection, so assign it the "Hide" tag 
+    <tag group="Hide" tag="Ability"/>
+    </thing>-->
+
+  <!-- Defender Ability 
+  <thing
+    id="abDefender"
+    name="Stalwart Defender"
+    compset="Ability"
+    isunique="yes"
+    description="Add +2 to Defense rating with a corresponding -2 penalty on all attacks."
+    summary="Add +2 to Defense with a -2 on attacks.">-->
+    <!-- We don't want this ability appearing for normal selection, so assign it the "Hide" tag 
+    <tag group="Hide" tag="Ability"/>-->
+    <!-- This ability can be activated by the user to apply its effects 
+    <tag group="User" tag="Activation"/>-->
+    <!-- This script applies the activation effects 
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out
+      doneif (field[abilActive].value = 0)
+
+      ~apply the effects of the activated ability
+      #traitbonus[trDefense] += 2
+      #traitbonus[skMelee] -= 2
+      #traitbonus[skShooting] -= 2
+      ]]></eval>
+    </thing>-->
+
+  <!-- Power Attack Ability 
+  <thing
+    id="abAttack"
+    name="Power Attack"
+    compset="Ability"
+    isunique="yes"
+    description="Add +2 to all melee attacks with a corresponding -2 penalty on Defense rating."
+    summary="Add +2 to melee attacks with -2 on Defense.">-->
+    <!-- We don't want this ability appearing for normal selection, so assign it the "Hide" tag 
+    <tag group="Hide" tag="Ability"/>-->
+    <!-- This ability can be activated by the user to apply its effects 
+    <tag group="User" tag="Activation"/>-->
+    <!-- This script applies the activation effects 
+    <eval index="1" phase="PreTraits" priority="5000">
+      <before name="Calc trtFinal"/><![CDATA[
+      ~if we haven't been activated, just get out
+      doneif (field[abilActive].value = 0)
+
+      ~apply the effects of the activated ability
+      #traitbonus[skMelee] += 2
+      #traitbonus[trDefense] -= 2
+      ]]></eval>
+    </thing>-->
+
+  </document>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the assortment of attributes possessed by every actor for the
+      game system. The display order of attributes is controlled via the assignment of
+      an "explicit" tag with the relative position of each.
+-->
+
+<document signature="Hero Lab Data">
+
+  <!-- Strength Attribute -->
+  <thing
+    id="attrStr"
+    name="Strength"
+    compset="Attribute"
+    isunique="yes"
+    description="As its name implies, the STR (Strength) Attribute measures a character’s raw muscle power, affecting the amount of weight he can lift and carry, and how much damage he can deliver in melee combat. Higher STR scores define physically stronger characters.">
+    <fieldval field="trtAbbrev" value="STR"/>
+    <tag group="explicit" tag="1"/>
+    </thing>
+	
+<!-- Body Attribute -->
+  <thing
+    id="attrBod"
+    name="Body"
+    compset="Attribute"
+    isunique="yes"
+    description="A character’s BOD (Body) Attribute indicates how sturdy and “in shape” he is, measuring raw endurance as well as how much damage the character can withstand in combat. Higher BOD scores reflect greater durability and the ability to perform strenuous tasks for longer durations.">
+    <fieldval field="trtAbbrev" value="BOD"/>
+    <tag group="explicit" tag="2"/>
+    </thing>
+	
+	<!-- Reflexes Attribute -->
+  <thing
+    id="attrRfl"
+    name="Reflexes"
+    compset="Attribute"
+    isunique="yes"
+    description="The RFL (Reflexes) Attribute measures a character’s swiftness and reaction time, affecting how fast he can react to threats or cover ground. Higher RFL scores reflect less hesitation, better response times and quicker overall movement.">
+    <fieldval field="trtAbbrev" value="RFL"/>
+    <tag group="explicit" tag="3"/>
+    </thing>
+	
+  <!-- Dexterity Attribute -->
+  <thing
+    id="attrDex"
+    name="Dexterity"
+    compset="Attribute"
+    isunique="yes"
+    description="The DEX (Dexterity) Attribute defines a character’s fine motor control and physical acuity, a vital quality for everything from operating a computer to firing a handgun. Higher DEX scores reflect a steadier hand and superior hand-eye coordination.">
+    <fieldval field="trtAbbrev" value="DEX"/>
+    <tag group="explicit" tag="4"/>
+    </thing>
+
+  <!-- Intelligence Attribute -->
+  <thing
+    id="attrInt"
+    name="Intelligence"
+    compset="Attribute"
+    isunique="yes"
+    description="As can be surmised, the INT (Intelligence) Attribute measures a character’s brainpower, particularly his memory, higher reasoning and deductive powers. Higher INT scores reflect keener minds.">
+    <fieldval field="trtAbbrev" value="INT"/>
+    <tag group="explicit" tag="5"/>
+    </thing>
+
+  <!-- Willpower Attribute -->
+  <thing
+    id="attrWil"
+    name="Willpower"
+    compset="Attribute"
+    isunique="yes"
+    description="The WIL (Willpower) Attribute measures a character’s bravery and his capacity to “think for himself”, as well as his ability to steel his nerves and rally his body against fear and physical exhaustion, and to take charge of a situation. Higher WIL scores describe bolder and more decisive characters.">
+    <fieldval field="trtAbbrev" value="WIL"/>
+    <tag group="explicit" tag="6"/>
+    </thing>
+
+  <!-- Charisma Attribute -->
+  <thing
+    id="attrCha"
+    name="Charisma"
+    compset="Attribute"
+    isunique="yes"
+    description="The CHA (Charisma) Attribute measures a character’s personal appeal, affecting how those around him react to his general appearance, mannerisms and speech. While not an indicator of physical beauty per se, higher CHA scores describe characters who are more appealing and inspiring to others.">
+    <fieldval field="trtAbbrev" value="CHA"/>
+    <tag group="explicit" tag="7"/>
+    </thing>
+
+  <!-- Edge Attribute -->
+  <thing
+    id="attrEdg"
+    name="Edge"
+    compset="Attribute"
+    isunique="yes"
+    description="The EDG (Edge) Attribute is easily one of the most powerful Attributes a player character (or critical NPC) possesses. Representing raw luck, a character’s EDG points can be “burned” in game play to affect Action Checks, altering their outcomes slightly or even forcing a “do over” that can snatch a victory out of certain defeat. Characters with a higher EDG have more luck on their side.">
+    <fieldval field="trtAbbrev" value="EDG"/>
+    <tag group="explicit" tag="8"/>
+    </thing>
+
+  </document>
