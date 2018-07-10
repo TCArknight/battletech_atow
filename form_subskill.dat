@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<document signature="Hero Lab Data">
+
+  <portal
+    id="prtSubSk"
+    style="tblNormal">
+    <table_dynamic
+      component="SubSkill"
+      showtemplate="tShowSubSk"
+      choosetemplate="tPickSubSk"
+      scrollable="yes"
+      alwaysupdate="yes"
+      candidatepick="ssHelp"
+      candidatefield="ssSubExpr"
+      addpick="ssHelp">
+      <additem><![CDATA[
+        @text = "Add SubSkill"
+        ]]>
+        </additem>
+      </table_dynamic>      
+    </portal>
+
+  <template
+    id="tPickSubSk"
+    name="SubSkill Pick"
+    compset="SubSkill"
+    marginhorz="3"
+    marginvert="1">
+
+    <portal
+      id="name"
+      style="lblSmall">
+      <label>
+        <labeltext><![CDATA[
+          @text = field[name].text
+          ]]></labeltext>
+        </label>
+      </portal>
+      
+    <position><![CDATA[
+    
+      ~set up our height based on our tallest portal
+      height = portal[name].height
+
+      ~if this is a "sizing" calculation, we're done
+      doneif (issizing <> 0)
+
+      ~position our tallest portal at the top
+      portal[name].top = 0
+      
+      ~position the name on the left and let it use all available space
+      portal[name].width = width
+        
+      ]]></position>
+    </template>
+    
+  <template
+    id="tShowSubSk"
+    name="SubSkill Show"
+    compset="SubSkill"
+    marginhorz="3"
+    marginvert="1">
+
+    <portal
+      id="name"
+      style="lblSmall">
+      <label>
+        <labeltext><![CDATA[
+          @text = field[name].text
+          ]]></labeltext>
+        </label>
+      </portal>
+    
+    <portal
+      id="delete"
+      style="actDelete"
+      tiptext="Click to delete this item">
+      <action
+        action="delete">
+        </action>
+      </portal>
+
+    <position><![CDATA[
+    
+      ~set up our height based on our tallest portal
+      height = portal[name].height
+
+      ~if this is a "sizing" calculation, we're done
+      doneif (issizing <> 0)
+
+      ~position our tallest portal at the top
+      portal[name].top = 0
+      portal[name].left = 0
+      
+      ~center the other portals vertically
+      perform portal[delete].centervert
+
+      ~position the delete portal on the far right
+      perform portal[delete].alignedge[right,0]
+
+      portal[name].left = 0
+      portal[name].width = minimum(portal[name].width,portal[delete].left - 5)
+            
+      ~if the ability is auto-added, change its font to indicate that fact
+      if (candelete = 0) then
+        perform portal[name].setstyle[lblAuto]
+        endif
+        
+      ]]></position>
+    </template>
+
+  <layout
+    id="laySubSk"
+    marginvert="4">
+    <portalref portal="prtSubSk" taborder="20"/>
+    <position><![CDATA[
+
+      ~position and size the table to span the full layout
+      portal[prtSubSk].left = 0
+      portal[prtSubSk].width = width
+      
+      ]]></position>
+    </layout>
+
+  <form
+	id="frmSubSk"
+	name="Subskills"
+	marginhorz="10"
+	marginvert="5">
+	<layoutref layout="laySubSk"/>
+	<position><![CDATA[
+	  layout[laySubSk].width = 450
+	  perform layout[laySubSk].render
+	  width = layout[laySubSk].width
+	  height = 200
+	  ]]></position>
+	</form>
+
+  </document>

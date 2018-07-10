@@ -300,8 +300,8 @@
         xmlroot.attr["playername"] = playername
 
         ~output any affiliation
-        txt = hero.findchild[ISClan].field[name].text
-        node = xmlroot.addchild["ISClan"]
+        txt = hero.findchild[Affil].field[name].text
+        node = xmlroot.addchild["Affil"]
         xml[node].attr["name"] = txt
 
         ~output our total C-bills and XP

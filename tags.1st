@@ -39,6 +39,8 @@
     <value id="NoMinimum"/>   <!-- Resource does NOT need to be fully spent to avoid reporting a warning -->
     <value id="CustomItem"/>  <!-- Identifies a thing that has a user customizable name -->
     <value id="NoPersText"/>  <!-- User entered no background text -->
+    <value id="NoBookInfo"/>  <!-- User entered no background text -->
+    <value id="NoPageInfo"/>  <!-- User entered no background text -->
 	<value id="BonusXP1"/>      <!-- Used to track XP when adding or removing Affiliations -->
 	<value id="BonusXP2"/>      <!-- Used to track XP when adding or removing Life Modules -->
     </group>
@@ -77,6 +79,40 @@
     <value id="RerollInit"/>  <!-- Indicates that the hero can re-roll initiative values -->
     </group>
 
+  <!-- Affiliation group -->
+  <group
+    id="Affil"
+    dynamic="yes">  
+    </group>
+
+  <!-- Sub-Affiliation group -->
+  <group
+    id="SubAffil"
+    dynamic="yes">   
+    </group>
+
+  <!-- Sub-Affiliation group -->
+  <group
+    id="Skill"
+    dynamic="yes">  
+    <value id="Invalid"/> 	 <!-- Indicates that the skill has too many Subskills -->
+    <value id="SubSkReq"/> 	 <!-- Indicates that the skill has Subskills to choose -->
+    </group>
+	
+  <!-- ComplexAct group - Determines how complex the action for a skill is -->
+  <group
+    id="ComplexAct">
+    <value id="S" name="Simple"/> 
+    <value id="C" name="Complex"/>
+    </group>
+	
+  <!-- ComplexTra group - Determines how complex the training for a skill is -->
+  <group
+    id="ComplexTra">
+    <value id="B" name="Basic"/> 
+    <value id="A" name="Advanced"/>
+    </group>	
+	
   <!-- DashTacCon group - behaviors associated with the Dashboard and/or Tactical Console
         All tags that control behaviors relating to the Dashboard or TacCon should be
         defined in this group.
@@ -145,6 +181,7 @@
   -->
   <group
     id="HideTab">
+    <value id="affil"/>
     <value id="basics"/>
 	<value id="skills"/>
     <value id="abilities"/>

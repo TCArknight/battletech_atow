@@ -100,7 +100,7 @@
       style="lblNormal"
       showinvalid="yes">
       <label
-        field="thingname">
+        field="sklDisplay">
         </label>
       </portal>
 
@@ -131,7 +131,7 @@
 	  </portal>
 	 
 	<portal
-		id="lbldomain"
+		id="lblsubsk"
 		style="lblSecond">
 		<label
 			text="Subskill:">
@@ -139,13 +139,36 @@
 	  </portal>
 
 	<portal
-		id="domain"
-		style="editNormal">
-		<edit
-			field="domDomain">
-			</edit>
-	  </portal>
+		id="subskill"
+		style="chsNormal"
+		width="150">
+		<chooser_table
+		  component="SubSkill"
+		  choosetemplate="SimpleItem">
+	      <needtag container="Skill" thing="Skill"/>
+		  <chosen><![CDATA[
+			if (@ispick = 0) then
+			  @text = "{text clrwarning}Select Subskill"
+			else
+			  @text = field[name].text
+			  endif
+			]]></chosen>
+		  <titlebar><![CDATA[
+			@text = "Choose the Subskill for your skill"
+			]]></titlebar>
+		  </chooser_table>
+		</portal>
 
+    <portal
+      id="edit"
+      style="actSubSk"
+      tiptext="Add Subskill">
+      <action
+        action="edit"
+        buttontext="">
+        </action>
+      </portal>
+	  
     <portal
       id="delete"
       style="actDelete"
@@ -167,10 +190,11 @@
 
       ~center the other portals vertically
       perform portal[name].centervert
-	  perform portal[domain].centervert
-	  perform portal[lbldomain].centervert
+	  perform portal[subskill].centervert
+	  perform portal[lblsubsk].centervert
 	  perform portal[value].centervert
       perform portal[delete].centervert
+	  perform portal[edit].centervert
 
       ~position the delete portal on the far right
       perform portal[delete].alignedge[right,0]
@@ -184,19 +208,20 @@
       ~position the name next to the incrementer
       perform portal[name].alignrel[ltor,value,10]
 
-	  ~if we don't need a domain, hide it and let the name use all available space
-	  if (tagis[User.NeedDomain] = 0) then
-		portal[lbldomain].visible = 0
-		portal[domain].visible = 0
+	  ~if we don't need a subskill, hide it and let the name use all available space
+	  if (tagis[Skill.SubSkReq] = 0) then
+		portal[lblsubsk].visible = 0
+		portal[subskill].visible = 0
+		portal[edit].visible = 0
 		portal[name].width = minimum(portal[name].width,portal[info].left - portal[name].left - 10)
 	  
-	  ~otherwise, position the domain portals next to the name
+	  ~otherwise, position the subskill portals next to the name
 	  else
-		perform portal[lbldomain].alignrel[ltor,name,15]
-		perform portal[domain].alignrel[ltor,lbldomain,5]
-		portal[domain].width = 100
-
-	endif
+	    portal[lblsubsk].visible = 0
+		portal[subskill].visible = 0
+		perform portal[edit].alignrel[rtol,info,-10]
+		portal[name].width = minimum(portal[name].width,portal[edit].left - portal[name].left - 10)
+		endif
 
       ~if the ability is auto-added, change its font to indicate that fact
       if (candelete = 0) then

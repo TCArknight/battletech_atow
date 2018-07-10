@@ -17,19 +17,18 @@
 
   <!-- Validate facets of the race -->
   <thing
-    id="valISClan"
-    name="IS/Clan Affiliation"
+    id="valAffil"
+    name="Affiliation"
     compset="Simple">
     <tag group="Helper" tag="Bootstrap"/>
 
     <!-- Make sure that we have a race selected -->
     <evalrule index="1" phase="Validate" priority="8000" message="Must be selected"><![CDATA[
       ~if we have an affiliation selected, we're good
-      validif (hero.tagis[ISClan.?] <> 0)
+      validif (hero.tagis[HasAffil.?] <> 0)
       ]]></evalrule>
 
     </thing>
-
 
   <!-- Experience points thing for validation reporting -->
   <thing

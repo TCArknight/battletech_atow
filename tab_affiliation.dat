@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the definition of the "talents" tab panel. This tab is where
+      the user selects the special talents for the character.
+
+      All public visual elements used with this tab panel start with the prefix "ab"
+      to associate them with the tab.
+-->
+
+<document signature="Hero Lab Data">
+
+  <portal 
+    id="hdrAffil" 
+    style="lblTitle">
+    <label>
+      <labeltext>
+        @text = "Affiliation"
+        </labeltext>
+      </label>
+    </portal>
+           
+  <portal
+    id="afAffil"
+    style="chsNormal"
+    width="150">
+    <chooser_table
+      component="Affil"
+      choosetemplate="SimpleItem">
+      <chosen><![CDATA[
+        if (@ispick = 0) then
+          @text = "{text clrwarning}Select Affiliation"
+        else
+          @text = "Affiliation: " & field[name].text
+          endif
+        ]]></chosen>
+      <titlebar><![CDATA[
+        @text = "Choose the Affiliation for your character"
+        ]]></titlebar>
+      </chooser_table>
+    </portal>
+
+  <portal
+    id="hoHoriz1"
+    style="sepHorz">
+    <separator
+      isvertical="no">
+      </separator>
+    </portal>
+
+  <portal 
+    id="hdrSubAf" 
+    style="lblTitle">
+    <label>
+      <labeltext>
+        @text = "Sub-Affiliation"
+        </labeltext>
+      </label>
+    </portal>
+           
+  <portal
+    id="afSubAff"
+    style="chsNormal"
+    width="150">
+    <chooser_table
+      component="SubAffil"
+      choosetemplate="SimpleItem">
+	  <needtag container="HasAffil" thing="Affil" usehero="yes" />
+      <chosen><![CDATA[
+        if (@ispick = 0) then
+          @text = "{text clrwarning}Select Sub-Affiliation"
+        else
+          @text = "SubAffil: " & field[name].text
+          endif
+        ]]></chosen>
+      <titlebar><![CDATA[
+        @text = "Choose the Sub-Affiliation for your character"
+        ]]></titlebar>
+      </chooser_table>
+    </portal>
+
+  <portal
+    id="hoHoriz2"
+    style="sepHorz">
+    <separator
+      isvertical="no">
+      </separator>
+    </portal>
+                  
+  <template
+    id="afPick"
+    name="Affiliation Pick"
+    compset="Affil"
+    marginhorz="3"
+    marginvert="2">
+
+    <portal
+      id="name"
+      style="lblNormal"
+      showinvalid="yes">
+      <label
+        field="name">
+        </label>
+      </portal>
+
+    <portal
+      id="info"
+      style="actInfo">
+      <action
+        action="info">
+        </action>
+      <mouseinfo/>
+      </portal>
+
+    <portal
+      id="delete"
+      style="actDelete"
+      tiptext="Click to delete this item">
+      <action
+        action="delete">
+        </action>
+      </portal>
+
+    <position><![CDATA[
+      ~set up our height based on our tallest portal
+      height = portal[info].height
+
+      ~if this is a "sizing" calculation, we're done
+      doneif (issizing <> 0)
+
+      ~position our tallest portal at the top
+      portal[info].top = 0
+
+      ~center the other portals vertically
+      perform portal[name].centervert
+      perform portal[delete].centervert
+
+      ~position the delete portal on the far right
+      perform portal[delete].alignedge[right,0]
+
+      ~position the info portal to the left of the delete button
+      perform portal[info].alignrel[rtol,delete,-8]
+
+      ~position the name on the left and let it use all available space
+      portal[name].left = 0
+      portal[name].width = minimum(portal[name].width,portal[info].left - 5)
+
+      ~if the Talent is auto-added, change its font to indicate that fact
+      if (candelete = 0) then
+        perform portal[name].setstyle[lblAuto]
+        endif
+      ]]></position>
+
+    </template>
+	
+  <layout
+    id="affil">
+    <portalref portal="hdrAffil" />
+    <portalref portal="afAffil" taborder="10"/>
+    <portalref portal="hoHoriz1" />
+    <portalref portal="hdrSubAf" />
+    <portalref portal="afSubAff" taborder="20"/>
+
+    <!-- This script sizes and positions the layout and its child visual elements. -->
+    <position><![CDATA[
+      ~freeze our table in advancement mode to disable adding new choices
+      ~Note: All freezing must be done *before* any positioning is performed.
+      if (state.iscreate = 0) then
+        portal[hdrAffil].freeze = 1
+        portal[afAffil].freeze = 1
+        endif
+
+      ~position and size the table to span the full layout; it will only use the
+      ~vertical space that it actually needs
+      portal[hdrAffil].top = 0
+      portal[hdrAffil].height = 20
+      portal[hdrAffil].width = width
+      
+      portal[afAffil].top = portal[hdrAffil].bottom + 5
+      portal[afAffil].height = 20
+      portal[afAffil].width = width
+
+      portal[hoHoriz1].top = portal[afAffil].bottom + 10
+      portal[hoHoriz1].width = width
+      
+      portal[hdrSubAf].top = portal[hoHoriz1].bottom + 10
+      portal[hdrSubAf].height = 20
+      portal[hdrSubAf].width = width
+      
+      portal[afSubAff].top = portal[hdrSubAf].bottom + 5
+      portal[afSubAff].height = 20
+      portal[afSubAff].width = width
+
+      ]]></position>
+
+    </layout>
+
+  <panel
+    id="affil"
+    name="Affiliation"
+    marginhorz="5"
+    marginvert="5"
+    order="90">
+    <live>!HideTab.affil</live>
+    <layoutref layout="affil"/>
+    <position><![CDATA[
+      ]]></position>
+    </panel>
+  </document>

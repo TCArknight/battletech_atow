@@ -1282,6 +1282,16 @@
       </style_action>
     </style>
 
+  <!-- style used on the add AoE action button - bitmap-only with no text -->
+  <style
+    id="actSubSk">
+    <style_action
+      textcolorid="clraction"
+      font="fntactsml"
+      up="subskup" down="subskdn" off="subskof">
+      </style_action>
+    </style>
+	
   <!-- style used on the gear action button - bitmap-only with no text -->
   <style
     id="actGear">

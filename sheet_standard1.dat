@@ -76,7 +76,7 @@
           @text &= " (" & #resleft[resXP] & " left)"
           endif
         @text &= "{br}{align left}{/b}"
-        temp = hero.findchild[ISClan].field[name].text
+        temp = hero.findchild[Affil].field[name].text
         if (empty(temp) <> 0) then
           temp = "Unknown"
           endif

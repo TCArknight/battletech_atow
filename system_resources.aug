@@ -216,6 +216,29 @@
       </bitmap>
     </resource>
 
+  <!-- bitmap used for the "subskill" button on skill picks -->
+  <resource
+    id="subskup">
+    <bitmap
+      bitmap="subskill_up.bmp"
+      istransparent="yes">
+      </bitmap>
+    </resource>
+  <resource
+    id="subskdn">
+    <bitmap
+      bitmap="subskill_down.bmp"
+      istransparent="yes">
+      </bitmap>
+    </resource>
+  <resource
+    id="subskof">
+    <bitmap
+      bitmap="subskill_off.bmp"
+      istransparent="yes">
+      </bitmap>
+    </resource>
+	
   <!-- color used when drawing the title above summary panels -->
   <resource
     id="sumtext"

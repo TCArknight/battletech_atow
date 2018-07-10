@@ -263,5 +263,12 @@
     <tag group="explicit" tag="50"/>
     </thing>
 
+  <!-- AoE Helper -->
+  <thing
+    id="ssHelp"
+    name="Subskill Helper"
+    compset="ssHelp"
+    description="Description goes here">
+    </thing>
 
     </document>

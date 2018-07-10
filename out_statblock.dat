@@ -168,12 +168,19 @@
         append @boldon & "Name: " & @boldoff & name & @newline
 
         ~output any affiliation
-        txt = hero.findchild[ISClan].field[name].text
+        txt = hero.findchild[Affil].field[name].text
         if (empty(txt) <> 0) then
           txt = "-none-"
           endif
-        append @boldon & "Affiliation: " & @boldoff & txt & @newline
-
+        append @boldon & "Affiliation: " & @boldoff & txt 
+		
+		txt = hero.findchild[SubAffil].field[name].text
+        if (empty(txt) = 0) then
+          append " (" & txt & ")"
+          endif
+        
+		append @newline
+		
         ~output age
         append @boldon & "Age: " & @boldoff & hero.child[mscPerson].field[perAge].text & @newline
 

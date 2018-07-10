@@ -73,7 +73,7 @@ A Time of War rulebook contains everything you need to start your adventure in t
     <leadsummary><![CDATA[
       ~start with the affiliation
       var txt as string
-      txt = hero.findchild[ISClan].field[name].text
+      txt = hero.findchild[Affil].field[name].text
       if (empty(txt) <> 0) then
         txt = "No Affiliation"
         endif

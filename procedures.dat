@@ -703,7 +703,7 @@
     var info as string
 
     ~output our affiliation
-    info = hero.findchild[ISClan].field[name].text
+    info = hero.findchild[Affil].field[name].text
     if (empty(info) <> 0) then
       info = "-none-"
       endif
@@ -809,6 +809,30 @@
     infotext = infotext & "{b}XP Awarded{/b}: " & usagepool[JrnlXP].value & "{br}"
     infotext = infotext & "{b}Cash Awarded{/b}: " & usagepool[JrnlCash].value & "{br}"
     infotext = infotext & spacing
+    ]]></procedure>
+
+  <!-- Script used to set up SubSkill selection
+  -->
+  <procedure id="SetSSkExpr" context="pick"><![CDATA[
+    ~make sure there's a gizmo to travel to
+    doneif (isgizmo = 0)
+    
+    ~set up our tag expression for selecting appropriate specialty
+    var expr as string
+    var selSub as string
+    var myId as string
+
+    expr = "component.SubSkill & (User.CustSkill |  "
+
+    expr &= myId & ")"
+	
+	if (empty(selSub) = 0) then
+	  expr &= " & " & selSub
+	  endif
+    
+	~notify expr
+	
+    gizmo.childfound[ssHelp].field[ssSubExpr].text = expr
     ]]></procedure>
 
 

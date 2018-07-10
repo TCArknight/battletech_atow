@@ -594,7 +594,39 @@
 
     </component>
 
+  <!-- SrcInfo component
+        Used for specifying sourcebook information about a component.
+  -->
+  <component
+    id="SrcInfo"
+    name="Source Info">
 
+    <field
+      id="srcBook"
+      name="Source Book"
+      type="derived"
+      maxlength="50">
+      </field>
+
+    <field
+      id="srcPage"
+      name="Source Page"
+      type="derived"
+      maxlength="5">
+      </field>
+
+    <eval index="1" phase="Setup" priority="1000"><![CDATA[
+      ~ Assign a tag if the user hasn't specified any source info
+	  if (field[srcBook].isempty <> 0) then
+	    perform assign[Helper.NoBookInfo]
+        endif
+	  if (field[srcPage].isempty <> 0) then
+	    perform assign[Helper.NoPageInfo]
+        endif
+		
+      ]]></eval>
+    </component>
+	
   <!-- Define various component sets associated with the components defined above.
   -->
 

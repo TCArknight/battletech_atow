@@ -8,7 +8,67 @@
 -->
 
 <document signature="Hero Lab Data">
+  
+  <!-- Source Information group -->
+  <inputthinggroup
+    id="SourceInfo">
+	<inputthing
+      name="Source Info"
+      helptext="Entries related to the source material are below..">
+      <it_separator/>
+      </inputthing>
+    <inputthing
+      name="Book Source"
+      helptext="Specify the sourcebook for the thing.">
+      <it_field field="srcBook"/>
+      </inputthing>
+    <inputthing
+      name="Page Number"
+      helptext="Specify the page number for the thing.">
+      <it_field field="srcPage"/>
+      </inputthing>
+    </inputthinggroup>
+	
+  <!-- Affiliation editthing -->
+  <editthing
+    group="Affiliate"
+    compset="Affil"
+    name="Affiliation"
+    prefix="aff"
+    description="Affiliations are..."
+    summary="Defines an Affiliation for a character.">
+    <inputthing
+      name="Short Name"
+      helptext="Specify a shorter name for the affiliation (max 20 characters).">
+      <it_field field="afShort"/>
+      </inputthing>
+    <inputthing>
+      <it_groupref id="SourceInfo"/>
+      </inputthing>
+    </editthing>
 
+  <!-- Sub-Affiliation editthing -->
+  <editthing
+    group="Affiliate"
+    compset="SubAffil"
+    name="Sub-Affiliation"
+    prefix="saf"
+    description="Sub-Affiliation..."
+    summary="Defines a Sub-affiliation for a character.">
+    <inputthing
+      name="Short Name"
+      helptext="Specify a shorter name for the sub-affiliation (max 20 characters).">
+      <it_field field="saShort"/>
+      </inputthing>
+    <inputthing
+      name="Affiliation"
+      helptext="Select the Affiliation this sub-affiliation belongs to.">
+      <it_taglist group="Affil" tag="?"/>
+      </inputthing>
+    <inputthing>
+      <it_groupref id="SourceInfo"/>
+      </inputthing>
+    </editthing>
 
   <!-- Attribute editthing -->
   <editthing
@@ -62,6 +122,29 @@
       helptext="Select the attribute used to calculate the dice pool for this skill.">
       <it_linkage compset="Attribute" linkage="attribute"/>
       </inputthing>
+    <inputthing
+      name="Linked Attribute for Advanced Skill"
+      helptext="Select the attribute used to calculate the dice pool for this skill.">
+      <it_linkage compset="Attribute" linkage="attribute2"/>
+      </inputthing>	
+	<inputthing
+      name="Skill Complexity"
+      helptext="Determines how complex a skill is.">
+      <it_separator/>
+      </inputthing>
+    <inputthing
+      name="Action"
+      helptext="Select action portion of the complexity.">
+      <it_taglist group="ComplexAct" tag="?"/>
+      </inputthing>
+    <inputthing
+      name="Training"
+      helptext="Select training portion of the complexity.">
+      <it_taglist group="ComplexTra" tag="?"/>
+      </inputthing>
+    <inputthing>
+      <it_groupref id="SourceInfo"/>
+      </inputthing>
     </editthing>
 
 
@@ -110,17 +193,6 @@
       </inputthing>
 -->
     </editthing>
-
-
-  <!-- Affiliation editthing -->
-  <editthing
-    compset="ISClan"
-    name="IS/Clan Affiliations"
-    prefix="aff"
-    description="Affiliations have no special fields - only a name. If a race confers an ability,{br}create it as a special ability and bootstrap it from the affiliation."
-    summary="Defines an Affiliation that can be selected by a character.">
-    </editthing>
-
 
   <!-- Equipment editthing - for basic gear -->
   <editthing

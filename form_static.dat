@@ -18,36 +18,6 @@
 <document signature="Hero Lab Data">
 
 
-  <!-- stISClan portal
-        Displays a chooser wherein the user can select the race for the character.
-
-        We use the "LargeItem" template for selecting the adjustments, since all we
-        need is basic information.
-
-        The "chosen" script shows the selected race with a suitable prefix. If no
-        race is yet selected, a prompt it shown with appropriate color highlighting.
-  -->
-  <portal
-    id="stISClan"
-    style="chsNormal"
-    width="150">
-    <chooser_table
-      component="ISClan"
-      choosetemplate="LargeItem">
-      <chosen><![CDATA[
-        if (@ispick = 0) then
-          @text = "{text clrwarning}Select Affiliation"
-        else
-          @text = "Affiliation: " & field[name].text
-          endif
-        ]]></chosen>
-      <titlebar><![CDATA[
-        @text = "Choose the affiliation for your character"
-        ]]></titlebar>
-      </chooser_table>
-    </portal>
-
-
   <!-- stName template
         This template displays the character name and a label to prefix it.
   -->
@@ -201,7 +171,6 @@
   -->
   <layout
     id="static">
-    <portalref portal="stISClan" taborder="20"/>
     <templateref template="stName" thing="heroname" taborder="10"/>
     <templateref template="stActor" thing="actor"/>
 
@@ -212,10 +181,8 @@
       template[stName].left = 10
       perform template[stName].render
 
-      ~position the affiliation portal to the right of the name, with the actor template
-      ~a little to the right of the affiliation
-      portal[stISClan].left = template[stName].right + 20
-      template[stActor].left = portal[stISClan].right + 15
+      ~position the actor template to the right of the name
+      template[stActor].left = template[stName].right + 15
 
       ~limit the width of the actor template to the remaining space available and
       ~then render the template
@@ -225,7 +192,6 @@
       ~center all visual elements vertically
       ~Note: We can't do this until after we've calculated the heights for both
       ~       templates, which is done when we render them.
-      portal[stISClan].top = (height - portal[stISClan].height) / 2
       template[stName].top = (height - template[stName].height) / 2
       template[stActor].top = (height - template[stActor].height) / 2
       ]]></position>

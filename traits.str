@@ -136,6 +136,7 @@
     <!-- Attributes have a minimum trait value of 1 -->
     <eval index="1" phase="Initialize" priority="3000"><![CDATA[
       field[trtMinimum].value = 1
+	  field[trtMaximum].value = 11
       ]]></eval>
 
     <!-- Each Attribute point that is allocated by the user costs 100 XP -->
@@ -144,8 +145,9 @@
       <after name="Bound trtUser"/><![CDATA[
 	  var i as number
 	  i = field[trtUser].value
-      ~hero.child[resXP].field[resSpent].value += field[trtUser].value * 100
+	  
 	  hero.child[resXP].field[resSpent].value += herofield[xpCosts].matrixvalue[i,1]
+	  
       ]]></eval>
 
 	  <!-- Need to subtract any bonus XP gained from Affiliations or Life Modules
@@ -166,6 +168,14 @@
     autocompset="no"
 	panellink="skills">
 
+	<!-- Abbreviation for use in places like the TacCon -->
+    <field
+      id="sklDisplay"
+      name="Display Name"
+      type="derived"
+      maxlength="60">
+      </field>
+	  
 	  <!-- Net final roll that includes the value of the linked attribute -->
     <field
       id="sklRoll"
@@ -234,9 +244,107 @@
 	    endif
 
       ]]></eval>
+	        
+	  <!-- set the appropriate candidate expression -->
+	  <eval index="4" phase="Final" priority="1000" name="ssHelp Expr"><![CDATA[
+	  
+	  var myId as string
+	  var chosenSub as string
+	  var tempStr as string
+	  var chosenId as string
+	  
+      var selSub as string
+	  
+	  ~ Subskill should have the skill tag for this skill
+	  myId = tagids[Skill.sk?," & "]
+	  
+	  tempStr = "component.Skill & " & myId
 
+	  ~ if we don't have Subskills, we're good
+	  doneif (isgizmo = 0)
+	  
+	  ~step through each copy of this skill on the hero to pull previously 
+	  ~selected subskills
+	  foreach pick in hero where tempStr
+	    foreach pick in eachpick.gizmo from SubSkill
+		  if (empty(chosenSub) = 1) then
+		    chosenSub &= "("
+		  else
+		    chosenSub &= " & "
+			endif
+          chosenSub &= "!thingid." & eachpick.idstring
+		nexteach
+	  nexteach
+	
+	  if (empty(chosenSub) = 0) then
+		chosenSub &= ")"
+	    endif
+		
+	  selSub = chosenSub
+	  
+	  call SetSSkExpr
+	  ]]></eval>
+
+	  <!-- set the display name -->
+	  <eval index="5" phase="Final" priority="6000" name="Set Skill Display name"><![CDATA[
+	  ~ If there is no subskills, then Display is simply the name.
+	  ~ Otherwise, the Display Name is Skill Name/SubSkill Name
+	  var subname as string
+	  
+      if (isgizmo = 0) then
+	    field[sklDisplay].text = field[name].text
+	  else
+	    foreach pick in gizmo from SubSkill
+		  subname &= eachpick.field[name].text
+		  nexteach
+		  
+	    field[sklDisplay].text = field[name].text & "/" & subname
+	  endif
+	  
+	  ]]></eval>	 
+
+	  <!-- set the display name -->
+	  <eval index="6" phase="Setup" priority="5000" name="Check Invalid"><![CDATA[
+      ~ if we're not a pick, we're good
+	  doneif (ispick = 0)
+	  
+	  ~ if we don't have Subskills, we're good
+	  doneif (isgizmo = 0)
+	  
+      ~if we have no more than 1 subskill, we're good
+      doneif (hero.tagcount[HasSubSk.?] <= 1)
+      
+	  perform assign[Skill.Invalid]
+	  
+	  ]]></eval>
+    <!-- Make sure that skills have no more than 1 subskill -->
+    <evalrule index="1" phase="Validate" priority="8000" severity="error" message="Too many subskills."><![CDATA[
+      ~if we have no more than 1 subskill, we're good
+      validif (tagcount[Skill.Invalid] = 0)
+	  
+      ~mark associated tabs as invalid
+      container.panelvalid[skills] = 0
+      ]]></evalrule>		
      </component>
 
+  <!-- SubSkill component
+        Each subskill derives from this component
+  -->
+  <component
+    id="SubSkill"
+    name="Subskill"
+    autocompset="yes">
+	
+    <!-- Each affiliation needs its own identity tag to configure the hero appropriately -->
+    <identity group="SubSkill"/>
+    <identity group="HasSubSk"/>
+	
+    <!-- Track the affiliation on the actor by assigning the appropriate tag -->
+    <eval index="1" phase="Setup" priority="5000"><![CDATA[
+      perform forward[HasSubSk.?]
+      ]]></eval>
+
+    </component>
 
   <!-- Character traits component
         Each character trait derives from this component
@@ -353,21 +461,73 @@
         Each affiliation derives from this component
   -->
   <component
-    id="ISClan"
+    id="Affil"
     name="IS/Clan Affiliations"
     autocompset="no">
-
+	
+    <!-- Short Name for the affiliation -->
+    <field
+      id="afShort"
+      name="Short Name"
+      type="user"
+      maxlength="20">
+      </field>
+	  
     <!-- Each affiliation needs its own identity tag to configure the hero appropriately -->
-    <identity group="ISClan"/>
-
+    <identity group="Affil"/>
+    <identity group="HasAffil"/>
+	
     <!-- Track the affiliation on the actor by assigning the appropriate tag -->
     <eval index="1" phase="Setup" priority="5000"><![CDATA[
-      perform forward[ISClan.?]
+      perform forward[HasAffil.?]
       ]]></eval>
 
     </component>
 
+  <!-- Sub-Affiliation component
+        Each affiliation derives from this component
+  -->
+  <component
+    id="SubAffil"
+    name="IS/Clan Sub-Affiliations"
+    autocompset="no">
+	
+    <!-- Short Name for the affiliation -->
+    <field
+      id="saShort"
+      name="Short Name"
+      type="user"
+      maxlength="20">
+      </field>
 
+    <!-- Each affiliation needs its own identity tag to configure the hero appropriately -->
+    <identity group="SubAffil"/>
+    <identity group="IsSubAffil"/>
+	
+    <!-- Track the affiliation on the actor by assigning the appropriate tag -->
+    <eval index="1" phase="Setup" priority="5000"><![CDATA[
+      perform forward[IsSubAffil.?]
+      ]]></eval>
+
+    </component>
+
+  <!-- subskill Helper component
+        Each entSubSk Gizmo derives from this component
+  -->
+  
+  <component
+    id="ssHelp"
+    name="SubSkill Helper">
+    <!-- Selection Tag Expressions -->
+    <field
+      id="ssSubExpr"
+      name="Subskill Tag Expression"
+      type="derived"
+      maxlength="500">
+      </field>
+
+    </component>
+	
   <!-- Define various component sets associated with the components defined above.
   -->
 
@@ -389,6 +549,7 @@
     <compref component="Trait"/>
     <compref component="Domain"/>
     <compref component="CanAdvance"/>
+    <compref component="SrcInfo"/>
     </compset>
 
   <!-- Ability - all abilities derive from this compset -->
@@ -398,6 +559,7 @@
     <compref component="Trait"/>
     <compref component="SpecialTab"/>
     <compref component="CanAdvance"/>
+    <compref component="SrcInfo"/>
     </compset>
 
   <!-- Trait - all derived traits are based on this compset -->
@@ -409,10 +571,24 @@
 
   <!-- Affiliation - all affiliations derive from this compset -->
   <compset
-    id="ISClan"
+    id="Affil"
     forceunique="yes">
-    <compref component="ISClan"/>
+    <compref component="Affil"/>
+    <compref component="SrcInfo"/>
     </compset>
 
+  <!-- Sub-Affiliation - all sub-affiliations derive from this compset -->
+  <compset
+    id="SubAffil"
+    forceunique="yes">
+    <compref component="SubAffil"/>
+    <compref component="SrcInfo"/>
+    </compset>
 
+  <!-- An entity for the Subskill -->
+  <entity
+    id="entSubSk"
+    form="frmSubSk">
+    <bootstrap thing="ssHelp"/>
+    </entity>
   </document>

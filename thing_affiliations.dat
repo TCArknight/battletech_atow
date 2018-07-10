@@ -11,80 +11,82 @@
 
 <document signature="Hero Lab Data">
 
+  <!-- Affiliations -->
+
   <!-- Capellan Confederation (House Liao) -->
   <thing
     id="affCapCon"
-    name="Capallen Confederation (House Liao)"
-    compset="ISClan"
+    name="Capellan Confederation"
+    compset="Affil"
     isunique="yes"
     description="Having suffered badly at the hands of its neighbors for centuries, the Capellan Confederation has become a virtual police state, its people wary of enemies within and without and devoted to survival at any cost. Nearly destroyed by the Steiner-Davion offensive in the Fourth Succession War, the determined Capellan people rallied with fanatical zeal that reached its apex with the ascent of Chancellor Sun-Tzu Liao, whose Xin Sheng (Rebirth) movement revitalized the nation and marked a resurgence of the ancient Chinese culture that now dominates the realm.">
     <eval index="1" phase="PreTraits" priority="5000">
       <before name="Calc trtFinal"/><![CDATA[
-      #traitbonus[attrWil] += .5
+      ~ #traitbonus[attrWil] += .5
       ]]></eval>
 
     </thing>
-
-  <!-- Dwarf Race 
   <thing
-    id="racDwarf"
-    name="Dwarf"
-    compset="ISClan"
+    id="affDraCom"
+    name="Draconis Combine"
+    compset="Affil"
     isunique="yes"
-    description="Constitution +1. Charisma -1. Gains the Tough and Stalwart Defender abilities.">
-    <bootstrap thing="abTough"/>
-    <bootstrap thing="abDefender"/>
+    description="House Kurita’s rigid society is patterned strongly on the ideals of feudal Japan and allows for very few exceptions. An overriding belief in the superiority of Combine honor and the destiny of Kurita dominion over all has produced a society that is harsh and distrustful of all gaijin (outsiders), while idolizing principles of decorum and personal honor.">
     <eval index="1" phase="PreTraits" priority="5000">
       <before name="Calc trtFinal"/><![CDATA[
-      #traitbonus[attrBod] += 1
-      #traitbonus[attrCha] -= 1
+      ~ #traitbonus[attrWil] += .5
       ]]></eval>
-    </thing> -->
 
-  <!-- Elf Race 
+    </thing>
+	
+  <!-- Sub-Affiliations -->
   <thing
-    id="racElf"
-    name="Elf"
-    compset="ISClan"
+    id="safCapCom"
+    name="Capellan Commonality"
+    compset="SubAffil"
     isunique="yes"
-    description="Intelligence +1. Constitution -1. Gains the Alert ability.">
-    <bootstrap thing="abAlert"/>
-    <eval index="1" phase="PreTraits" priority="5000">
-      <before name="Calc trtFinal"/><![CDATA[
-      #traitbonus[attrInt] += 1
-      #traitbonus[attrBod] -= 1
-      ]]></eval>
-    </thing> -->
-
-  <!-- Orc Race 
+    description="Liao Sub-affiliation">
+    <tag group="Affil" tag="affCapCon"/>
+    </thing>
   <thing
-    id="racOrc"
-    name="Orc"
-    compset="ISClan"
+    id="safLaioCom"
+    name="Liao Commonality"
+    compset="SubAffil"
     isunique="yes"
-    description="Strength +1. Intelligence -1. Gains the Fortitude and Power Attack abilities.">
-    <bootstrap thing="abFortitud"/>
-    <bootstrap thing="abAttack"/>
-    <eval index="1" phase="PreTraits" priority="5000">
-      <before name="Calc trtFinal"/><![CDATA[
-      #traitbonus[attrStr] += 1
-      #traitbonus[attrInt] -= 1
-      ]]></eval>
-    </thing> -->
-
-  <!-- Avian Race 
+    description="Liao Sub-affiliation">
+    <tag group="Affil" tag="affCapCon"/>
+    </thing>
   <thing
-    id="racAvian"
-    name="Avian"
-    compset="ISClan"
+    id="safSianCom"
+    name="Sian Commonality"
+    compset="SubAffil"
     isunique="yes"
-    description="Dexterity +1. Wisdom -1. Gains the Flight ability.">
-    <bootstrap thing="abFlight"/>
-    <eval index="1" phase="PreTraits" priority="5000">
-      <before name="Calc trtFinal"/><![CDATA[
-      #traitbonus[attrDex] += 1
-      #traitbonus[attrWil] -= 1
-      ]]></eval>
-    </thing> -->
+    description="Liao Sub-affiliation">
+    <tag group="Affil" tag="affCapCon"/>
+    </thing>
+  <thing
+    id="safStICom"
+    name="St. Ives Commonality"
+    compset="SubAffil"
+    isunique="yes"
+    description="Liao Sub-affiliation">
+    <tag group="Affil" tag="affCapCon"/>
+    </thing>
+  <thing
+    id="safVicCom"
+    name="Victoria Commonality"
+    compset="SubAffil"
+    isunique="yes"
+    description="Liao Sub-affiliation">
+    <tag group="Affil" tag="affCapCon"/>
+    </thing>
 
+  <thing
+    id="safAzami"
+    name="Azami"
+    compset="SubAffil"
+    isunique="yes"
+    description="Kurita Sub-affiliation">
+    <tag group="Affil" tag="affDraCom"/>
+    </thing>
   </document>
