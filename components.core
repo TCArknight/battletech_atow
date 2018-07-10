@@ -638,6 +638,16 @@
       if (tagis[component.shortname] <> 0) then
         field[shortname].text &= " (" & domain & ")"
         endif
+	  
+	  ~ If we're not a Custom skill where the domain becomes the name, we're done
+      doneif (tagis[User.NameRep] = 0)
+      
+      ~ use domain as custom name
+      field[livename].text = domain
+      if (tagis[component.shortname] <> 0) then
+        field[shortname].text = domain
+        endif
+		
       ]]></eval>
 
     <!-- If the domain is required and not defined, report a validation error -->

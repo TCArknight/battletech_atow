@@ -286,7 +286,7 @@
 	  ]]></eval>
 
 	  <!-- set the display name -->
-	  <eval index="5" phase="Final" priority="6000" name="Set Skill Display name"><![CDATA[
+	  <eval index="5" phase="Render" priority="1000" name="Set Skill Display name"><![CDATA[
 	  ~ If there is no subskills, then Display is simply the name.
 	  ~ Otherwise, the Display Name is Skill Name/SubSkill Name
 	  var subname as string
@@ -295,7 +295,13 @@
 	    field[sklDisplay].text = field[name].text
 	  else
 	    foreach pick in gizmo from SubSkill
-		  subname &= eachpick.field[name].text
+		  notify eachpick.field[livename].text
+		  if (empty(eachpick.field[livename].text) = 0) then
+		    subname &= eachpick.field[livename].text
+		  else
+		    subname &= eachpick.field[name].text
+			endif
+			
 		  nexteach
 		  
 	    field[sklDisplay].text = field[name].text & "/" & subname
@@ -333,7 +339,7 @@
   <component
     id="SubSkill"
     name="Subskill"
-    autocompset="yes">
+    autocompset="no">
 	
     <!-- Each affiliation needs its own identity tag to configure the hero appropriately -->
     <identity group="SubSkill"/>
@@ -551,7 +557,17 @@
     <compref component="CanAdvance"/>
     <compref component="SrcInfo"/>
     </compset>
-
+	
+  <!-- SubSkill - all subskills derive from this compset -->
+  <compset
+    id="SubSkill">
+    <compref component="SubSkill"/>
+    <compref component="Trait"/>
+    <compref component="Domain"/>
+    <compref component="CanAdvance"/>
+    <compref component="SrcInfo"/>
+    </compset>
+	
   <!-- Ability - all abilities derive from this compset -->
   <compset
     id="ChaTra">
